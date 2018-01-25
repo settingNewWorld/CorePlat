@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CorePlat", "src\CorePlat\CorePlat.xproj", "{33095A63-27B7-4298-A5DA-D048C0F399E3}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CP.DLMIS.Services", "CP.DLMIS.Services\CP.DLMIS.Services.xproj", "{8A86A636-A8ED-463C-9174-6BF0F9BD4469}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{33095A63-27B7-4298-A5DA-D048C0F399E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33095A63-27B7-4298-A5DA-D048C0F399E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33095A63-27B7-4298-A5DA-D048C0F399E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A86A636-A8ED-463C-9174-6BF0F9BD4469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A86A636-A8ED-463C-9174-6BF0F9BD4469}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A86A636-A8ED-463C-9174-6BF0F9BD4469}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A86A636-A8ED-463C-9174-6BF0F9BD4469}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

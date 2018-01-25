@@ -65,7 +65,7 @@ namespace CP.DLMIS.Services
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");//id? 表示可选
             });
         }
     }

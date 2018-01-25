@@ -1,5 +1,5 @@
---temp-output:F:\CorePlat\CorePlat\src\CorePlat\obj\Debug\netcoreapp1.0\
---out:F:\CorePlat\CorePlat\src\CorePlat\bin\Debug\netcoreapp1.0\CorePlat.dll
+--temp-output:F:\CorePlat\CorePlat\CP.DLMIS.Services\obj\Debug\netcoreapp1.0\
+--out:F:\CorePlat\CorePlat\CP.DLMIS.Services\bin\Debug\netcoreapp1.0\CP.DLMIS.Services.dll
 --define:DEBUG
 --define:TRACE
 --define:NETCOREAPP1_0
@@ -8,7 +8,7 @@
 --suppress-warning:CS1705
 --optimize:False
 --emit-entry-point:True
---output-name:CorePlat
+--output-name:CP.DLMIS.Services
 --file-version:1.0.0.0
 --version:1.0.0.0
 --informational-version:1.0.0
@@ -196,7 +196,9 @@
 --reference:C:\Users\Administrator\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll
 --reference:C:\Users\Administrator\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\Administrator\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
---resource:"F:\CorePlat\CorePlat\src\CorePlat\obj\Debug\netcoreapp1.0\CorePlatdotnet-compile.deps.json",CorePlat.deps.json
-F:\CorePlat\CorePlat\src\CorePlat\Program.cs
-F:\CorePlat\CorePlat\src\CorePlat\Startup.cs
-F:\CorePlat\CorePlat\src\CorePlat\Controllers\HomeController.cs
+--resource:"F:\CorePlat\CorePlat\CP.DLMIS.Services\obj\Debug\netcoreapp1.0\CP.DLMIS.Servicesdotnet-compile.deps.json",CP.DLMIS.Services.deps.json
+F:\CorePlat\CorePlat\CP.DLMIS.Services\Program.cs
+F:\CorePlat\CorePlat\CP.DLMIS.Services\Startup.cs
+F:\CorePlat\CorePlat\CP.DLMIS.Services\Controllers\HomeController.cs
+F:\CorePlat\CorePlat\CP.DLMIS.Services\Controllers\TestController.cs
+F:\CorePlat\CorePlat\CP.DLMIS.Services\Models\Movie.cs
