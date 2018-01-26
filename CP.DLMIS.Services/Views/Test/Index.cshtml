@@ -1,7 +1,39 @@
 ﻿@{
-    ViewData["Title"] = "Movie List";
+    ViewData["Title"] = "测试流程数据";
+    Layout = null;
 }
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    function RefreshMethod() {
+        window.location.href = "./TestWFNew.aspx";
+    }
+</script>
+<html>
+<head runat="server">
+    <title>此页面主要用来测试条件和成品审核流程</title>
+</head>
+<body>
+    <form id="form1">
+        <div>
+            后续节点信息：
+            <textarea ID="txtNext" rows="10" cols="100"></textarea>
+            <hr />
+            输入要启动的流程模板ID：<input ID="txtTemplateId" value="2"/>
+            输入要提交的流程实例ID：<input ID="txtConditionInsId"/>
+            当前办理用户ID：<input ID="txtConditionUserId"  value="HU090223000208"/>
+            当前办理用户名称：<input ID="txtConditionUserName"  value="刘晓东"/>
+            <br />
+            说明：刘晓东,HU090223000208,秀连勇,HU090223000212,管理员,SU000000000001<br />
+            <input ID="button1" type="button" value="实例化流程，并提交到第一个节点" />
+            <br />
+            <input ID="button2"  type="button" value="提交流程实例" /><br />
+            <input ID="button5"  type="button" value="回退流程实例"/><br />
+            <input ID="button7" type="button" value="中止流程实例"/><br />
+            <input ID="button9" type="button" value="获取流程实例后续节点信息" /><br />
+            <input type="button"  onclick="RefreshMethod();" value="刷新" />
+            <hr />
+        </div>
+    </form>
+</body>
 
-<h2>My Movie List</h2>
-
-<p>Hello from our View Template!</p>
+</html>
