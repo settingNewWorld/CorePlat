@@ -15,5 +15,7 @@ namespace CP.WorkFlow.Designer.Web.Controllers
         {
             return View();
         }
+
+        //TODO:获取流程节点、连接点信息
     }
 }

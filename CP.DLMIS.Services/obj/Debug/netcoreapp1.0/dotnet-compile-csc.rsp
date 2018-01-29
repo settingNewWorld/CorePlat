@@ -192,9 +192,13 @@
 -r:"C:\Users\Administrator\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll"
 -r:"C:\Users\Administrator\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll"
 -r:"C:\Users\Administrator\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll"
+-r:"C:\Users\Administrator\.nuget\packages\System.Xml.XmlDocument\4.0.1\ref\netstandard1.3\System.Xml.XmlDocument.dll"
+-r:"C:\Users\Administrator\.nuget\packages\System.Xml.XPath\4.0.1\ref\netstandard1.3\System.Xml.XPath.dll"
+-r:"C:\Users\Administrator\.nuget\packages\system.xml.xpath.xmldocument\4.0.0\ref\dotnet\System.Xml.XPath.XmlDocument.dll"
 -resource:"F:\CorePlat\CorePlat\CP.DLMIS.Services\obj\Debug\netcoreapp1.0\CP.DLMIS.Servicesdotnet-compile.deps.json",CP.DLMIS.Services.deps.json
 "F:\CorePlat\CorePlat\CP.DLMIS.Services\Program.cs"
 "F:\CorePlat\CorePlat\CP.DLMIS.Services\Startup.cs"
 "F:\CorePlat\CorePlat\CP.DLMIS.Services\Controllers\HomeController.cs"
 "F:\CorePlat\CorePlat\CP.DLMIS.Services\Controllers\TestController.cs"
 "F:\CorePlat\CorePlat\CP.DLMIS.Services\Models\Movie.cs"
+"F:\CorePlat\CorePlat\CP.DLMIS.Services\Models\TaskInstanceParameter.cs"
