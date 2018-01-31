@@ -446,7 +446,8 @@
             $("#export").on("click", function() {
                 var json = JSON.stringify(diagram.save()),
                     blob = new Blob([json], {type: "application\/json"});;
-
+                
+                //浏览器下载方式
                 if (navigator.msSaveBlob) {
                     navigator.msSaveBlob(blob, this.getAttribute("download"));
                 } else {
@@ -454,10 +455,10 @@
                 }
             });
 
-            //打开上传
+            //打开上传--TODO:待调试
             $("#upload").kendoUpload({
                 async: {
-                    saveUrl: "save",
+                    saveUrl: "save",//保存的url，即调用的接口
                     removeUrl: "remove",
                     autoUpload: true
                 },
@@ -466,7 +467,7 @@
                     select: ""
                 },
                 select: function(e) {
-                    if (typeof(FileReader) !== "undefined") {
+                    if (typeof (FileReader) !== "undefined") {
                         var f = e.files[0].rawFile,
                             reader = new FileReader;
 
@@ -481,11 +482,12 @@
                 }
             });
 
+            //窗格配置
             $("#splitter").kendoSplitter({
                 panes: [
-                    { collapsible: true, size: "200px" },
-                    { collapsible: false, scrollable: false },
-                    { collapsible: true, size: "300px" }
+                    { collapsible: true, size: "200px" },//第一个窗格可调整，且宽度为200px
+                    { collapsible: false, scrollable: false },//第二个窗格不能调整，且没有滚动条
+                    { collapsible: true, size: "300px" }//第三个窗格可调整，且宽度为300px
                 ]
             });
 
@@ -493,41 +495,41 @@
             //初始化设计框
 
             var diagram = $("#diagram").kendoDiagram({
-                theme: "default",
-                dataSource: {
+                theme: "default",//主体默认
+                dataSource: {//数据源--TODO：需要调整
                     data: [{
                         name: "0",
                         items: [{
                             name: "0"
                         }]
                     }],
-                    schema: {
+                    schema: {//映射
                         model: {
                             children: "items"
                         }
                     }
                 },
-                shapeDefaults: {
+                shapeDefaults: {//图形默认
                     width: 120,
                     height: 120,
                     fill: "#8ebc00"
                 },
-                layout: {
+                layout: {//布局
                     type: "tree",
                     subtype: "right"
                 },
-                select: function(e) {
+                select: function(e) {//选择时
                     if (e.selected.length) {
                         selected = e.selected;
                         var element = e.selected[0];
-                        if (element instanceof Shape) {
+                        if (element instanceof Shape) {//element 属于Shape，则返回true
                             updateShapeProperties(element.options);
                         } else {
                             updateConnectionProperties(element.options);
                         }
                     }
                 },
-                editable: {
+                editable: {//图形是否可编辑
                     resize: false//禁止拉伸图形大小
                 }
             }).getKendoDiagram();
@@ -537,6 +539,7 @@
                 alert("oh,你双击了我！");
             });
 
+            //更新图形属性
             function updateShapeProperties(shape) {
                 $("#shapeBackgroundColorPicker").getKendoColorPicker().value(kendo.parseColor(shape.background));
                 $("#shapeStrokeColorPicker").getKendoColorPicker().value(kendo.parseColor(shape.stroke.color));
@@ -547,24 +550,26 @@
                 $("#shapePositionY").getKendoNumericTextBox().value(shape.y);
             }
 
+            //更新连接线属性
             function updateConnectionProperties(shape) {
                 $("#connectionStartCap").getKendoDropDownList().value(shape.startCap);
                 $("#connectionEndCap").getKendoDropDownList().value(shape.endCap);
             }
 
+            //左侧折叠窗格
             $("#shapesPanelBar").kendoPanelBar({
                 expandMode: "multiple"
             }).getKendoPanelBar().expand(">li", false);
-
+            //右侧折叠窗格
             $("#configurationPanelBar").kendoPanelBar({
                 expandMode: "multiple"
             }).getKendoPanelBar().expand(">li", false);
-
+            //颜色选择器
             $(".colorPicker").kendoColorPicker({
                 value: "#ffffff",
                 buttons: false
             });
-
+            //画布布局属性下拉框
             $("#canvasLayout").kendoDropDownList({
                 dataTextField: "text",
                 dataValueField: "value",
@@ -583,6 +588,7 @@
                 ]
             });
 
+            //连接线开始上限下拉框
             $("#connectionStartCap").kendoDropDownList({
                 dataTextField: "text",
                 dataValueField: "value",
@@ -594,6 +600,7 @@
                 ]
             });
 
+            //连接线结束下限下拉框
             $("#connectionEndCap").kendoDropDownList({
                 dataTextField: "text",
                 dataValueField: "value",
@@ -605,12 +612,14 @@
                 ]
             });
 
+            //更新示意图调整大小
             function updateSliderIndicator(e) {
                 $("#diagramZoomIndicator").attr("value", e.value);
 
                 diagram.zoom(e.value / 100);
             }
 
+            //示意图滑块大小
             $("#diagramZoom").kendoSlider({
                 min: 10,
                 max: 200,
@@ -626,7 +635,7 @@
             //数值变量控件
             $(".numeric").kendoNumericTextBox();
 
-            //窗口大小
+            //设置窗口大小
             $("#window").kendoWindow({
                 visible: false,
                 width: 800,
@@ -634,20 +643,22 @@
                 title: "About"
             });
 
-            //关于弹窗
+            //点击关于时的弹窗
             $("#about").click(function() {
                 $("#window").getKendoWindow().center().open();
             });
 
+            //图形窗格条拖动设置
             $("#shapesPanelBar .shapeItem").kendoDraggable({
                 hint: function() {
-                    return this.element.clone();
+                    return this.element.clone();//从左侧窗格把元素复制过来
                 }
             });
 
+            //从左侧窗格把图形拖拽完成后触发
             $("#diagram").kendoDropTarget({
                 drop: function(e) {
-                    var item, pos, transformed;
+                    var item, pos, transformed;//定义
                     if (e.draggable.hint) {
                         item = e.draggable.hint.data("shape");
                         pos = e.draggable.hintOffset;
@@ -656,7 +667,8 @@
                         item.x = transformed.x;
                         item.y = transformed.y;
 
-                        diagram.addShape(item);
+                        //console.log(item);
+                        diagram.addShape(item);//获取具体数据更改位置
                     }
                 }
             });
