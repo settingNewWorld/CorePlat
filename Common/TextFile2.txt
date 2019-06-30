@@ -1,0 +1,124 @@
+﻿ALTER PROCEDURE [dbo].[Get_Data_KCGLFPSQ]    
+(    
+@InsID VARCHAR(1000)
+)    
+AS  
+--主表ID
+
+declare 
+
+@id  nvarchar(50),
+@TheApplicant nvarchar(200),
+@ContractNumber nvarchar(200),
+@TheNameOfTheContract nvarchar(200),
+@TheOwnerUnits nvarchar(200),
+@ApplicationAmount nvarchar(200),
+@ApplicationDepartments nvarchar(200),
+@TheCurrentProgress nvarchar(200),
+@InvoiceType [nvarchar](200),
+@TaxpayerIdentificationNumber nvarchar(200),
+@TheNameOfTheBank nvarchar(200),
+@Address nvarchar(200),
+@InvoicesContent nvarchar(200),
+@TheInvoiceNote nvarchar(200),
+@InvoiceOrReceipt nvarchar(200),
+@TotalAmount [nvarchar](200),
+@TheCumulativeProgress nvarchar(200),
+@Accounts nvarchar(200),
+@Telephone nvarchar(200),
+
+
+
+--申请人 节点ID  4211
+@SQRID nvarchar(50),
+
+@SQRAddTime nvarchar(50),
+
+@SQRLogRemark nvarchar(max),
+
+--申请部门负责人 节点ID 4212
+@FZRID nvarchar(50),
+
+@FZRAddTime nvarchar(50),
+
+@FZRLogRemark nvarchar(max),
+
+--项目管理中心 节点ID 4213
+@XMGLZXID nvarchar(50),
+
+@XMGLZXAddTime nvarchar(50),
+
+@XMGLZXLogRemark nvarchar(max),
+
+--经营开发部 节点ID 4214
+@JYKFBID nvarchar(50),
+
+@JYKFBAddTime nvarchar(50),
+
+@JYKFBLogRemark nvarchar(max),
+
+
+
+--流程标题
+@FormTitle nvarchar(200)
+
+
+--主表ID
+select @id=FormPk1,@FormTitle=InsName from DLFlow..WF_FlowInstance_Main  where Id = @InsID
+--主表信息
+select @TheApplicant =SQUserName,@ContractNumber=HTH,
+@TheNameOfTheContract=HTMC,@TheOwnerUnits=YZDW,@ApplicationAmount=BCFPJE,@ApplicationDepartments=SQDeptName,
+@TheCurrentProgress=TheCurrentProgress,@InvoiceType=FPLX,@TaxpayerIdentificationNumber=NSRSBH,
+@TheNameOfTheBank=KHYHMC,@Address=DZ,@InvoicesContent=KJNR,@TheInvoiceNote=BZ,@InvoiceOrReceipt=LX,
+@TotalAmount=TotalAmount,@TheCumulativeProgress=TheCumulativeProgress,@Accounts=ZH,@Telephone=DH
+from DLOA..[ISO_CW_KCSJHTFPSJSQ] where id = @id
+
+SELECT @SQRID=SignUserId,@SQRAddTime=CONVERT(varchar(12) ,AddTime, 111),@SQRLogRemark=LogRemark  FROM [DLFlow].[dbo].WF_FlowInstance_TaskManaLog where  NodeId = 4211 and InsId =@InsID
+SELECT @FZRID=SignUserId,@FZRAddTime=CONVERT(varchar(12) ,AddTime, 111),@FZRLogRemark=LogRemark  FROM [DLFlow].[dbo].WF_FlowInstance_TaskManaLog where  NodeId = 4212 and InsId =@InsID
+SELECT @XMGLZXID=SignUserId,@XMGLZXAddTime=CONVERT(varchar(12) ,AddTime, 111),@XMGLZXLogRemark=LogRemark FROM [DLFlow].[dbo].WF_FlowInstance_TaskManaLog where  NodeId = 4213 and InsId =@InsID
+SELECT @JYKFBID=SignUserId,@JYKFBAddTime=CONVERT(varchar(12) ,AddTime, 111),@JYKFBLogRemark=LogRemark  FROM [DLFlow].[dbo].WF_FlowInstance_TaskManaLog where  NodeId = 4214 and InsId =@InsID
+
+
+--查询全部
+SELECT 
+@TheApplicant as SQUserName,@ContractNumber as HTH,
+@TheNameOfTheContract as  HTMC,@TheOwnerUnits as YZDW,@ApplicationAmount as BCFPJE,@ApplicationDepartments as SQDeptName,
+@TheCurrentProgress as TheCurrentProgress,@InvoiceType as FPLX,@TaxpayerIdentificationNumber as NSRSBH,
+@TheNameOfTheBank as  KHYHMC,@Address as DZ,@InvoicesContent as KJNR,@TheInvoiceNote as BZ,@InvoiceOrReceipt as  LX,
+@TotalAmount as TotalAmount,@TheCumulativeProgress as TheCumulativeProgress,@Accounts as ZH,@Telephone as DH,
+(SELECT  DigitSignDataPic FROM DLUser.dbo.v_UserDigitSign WHERE   UserId =@SQRID)  as SQRID,
+@SQRAddTime as SQRAddTime,
+@SQRLogRemark  as SQRLogRemark,
+(SELECT  DigitSignDataPic FROM DLUser.dbo.v_UserDigitSign WHERE   UserId =@FZRID)  as FZRID,
+@FZRAddTime  as FZRAddTime,
+@FZRLogRemark  as FZRLogRemark,
+(SELECT  DigitSignDataPic FROM DLUser.dbo.v_UserDigitSign WHERE   UserId =@XMGLZXID)  as XMGLZXID,
+@XMGLZXAddTime  as XMGLZXAddTime,
+@XMGLZXLogRemark  as FGLDLogRemark,
+(SELECT  DigitSignDataPic FROM DLUser.dbo.v_UserDigitSign WHERE   UserId =@JYKFBID)  as JSKFBID,
+@JYKFBAddTime  as JYKFBAddTime,
+@JYKFBLogRemark  as JYKFBLogRemark,
+@FormTitle as FormTitle
+
+
+<script type="text/javascript">
+function DownWord() {
+  var nWidth = 100;
+  var nHeight = 100;
+  var nLeft = (window.screen.width - nWidth) / 2;
+  var nTop = (window.screen.height - nHeight) / 2;
+  var url = "/DLWeb/Engine/WordExport/ExportFrm.aspx?WordCode=Word0164&IsExportPdf=false&Condition="+ WF_InsId +"&Sysid=203"
+  window.open(url, "", "left=" + nLeft + "px,top=" + nTop + "px,width=" + nWidth + "px,height=" + nHeight + "px,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes ");
+
+}
+</script>
+<td width='10px' id='tdDownWord0' >
+    <a href="#" onclick="javascript:DownWord();">
+        <img src="../../../Skin/DLCommon/SynIcon/Print.png" border="0" style="vertical-align:middle;">
+    </a>
+</td>
+<td width='50px' id='tdDownWord1'>
+<a href="#" onclick="javascript:DownWord();">
+<nobr><span id="Span3" style="font-size:16px;">打印表单</span><br></a>
+</td>
+<td width="10px"   id='tdDownWord2'></td>

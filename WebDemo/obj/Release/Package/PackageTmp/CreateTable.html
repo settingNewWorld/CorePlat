@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+    <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+    <!--[if lt IE 9]>
+       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        html, body, iframe {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        #wrap {
+            width: 100%;
+            height: 100%;
+        }
+
+        iframe {
+            border: none;
+        }
+    </style>
+    <script>
+        function GetTable() {
+            var obj = document.getElementById("ifm").contentWindow;
+            //获取数据
+            var dataLength = obj.document.getElementById("transTarget").children.length;
+            var sendData = "";
+            //遍历
+            for (var i = 0; i < dataLength; i++) {
+                data += document.getElementById("transTarget").children[i].innerText;
+            }
+            console.log(data);
+
+            //$.ajax({
+            //    async: false,
+            //    type: "POST",
+            //    url: "ashx/confirmLuckDraw.ashx?action=GetThreeCodes",
+            //    dataType: "text",
+            //    data: { ParentCode: parentCode },
+            //    success: function (data) {
+            //        strThree = data;
+            //    }
+            //});
+            //return strThree;
+        }
+    </script>
+</head>
+<body>
+    <!--<div id="wrap">
+        <iframe src="http://fanyi.youdao.com/" name="sendMessage"></iframe>
+    </div>-->
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <h2>
+                    在线生成数据表
+                </h2>
+                <p>
+                   目前仅支持创建sql数据表
+                </p>
+                <p>
+                    <a class="btn" href="#">在线帮助</a>
+                </p>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div id="wrap">
+                    <iframe src="http://fanyi.youdao.com/" name="sendMessage" id="ifm" runat="server" ></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <button type="button" class="btn btn-default btn-block btn-success">在线生成</button>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <h2>
+                    生成数据表在此展示
+                </h2>
+                <p>
+                    CREATE TABLE [dbo].[ISO_SupplierReview](
+                    [Id] [int] IDENTITY(1,1) PRIMARY KEY  NOT NULL,
+                    [FormTitle] [varchar](100) NULL,
+                    [FlowGuid] [nvarchar](50) NULL,
+                    [SupplierName] [nvarchar](200) NULL,
+                    [Introduction] [nvarchar](max) NULL,
+                    [DeptId] [int] NULL,
+                    [DeptName] [nvarchar](50) NULL)
+                </p>
+                <p>
+                    <a class="btn" href="#">更多信息</a>
+                </p>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- 包括所有已编译的插件 -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

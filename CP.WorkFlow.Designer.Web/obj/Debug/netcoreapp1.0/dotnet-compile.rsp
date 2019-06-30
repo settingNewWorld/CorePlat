@@ -1,5 +1,5 @@
---temp-output:F:\CorePlat\CorePlat\CP.WorkFlow.Designer.Web\obj\Debug\netcoreapp1.0\
---out:F:\CorePlat\CorePlat\CP.WorkFlow.Designer.Web\bin\Debug\netcoreapp1.0\CP.WorkFlow.Designer.Web.dll
+--temp-output:E:\个人学习\CorePlat\CorePlat\CP.WorkFlow.Designer.Web\obj\Debug\netcoreapp1.0\
+--out:E:\个人学习\CorePlat\CorePlat\CP.WorkFlow.Designer.Web\bin\Debug\netcoreapp1.0\CP.WorkFlow.Designer.Web.dll
 --define:DEBUG
 --define:TRACE
 --define:NETCOREAPP1_0
@@ -196,8 +196,8 @@
 --reference:C:\Users\Administrator\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll
 --reference:C:\Users\Administrator\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\Administrator\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
---resource:"F:\CorePlat\CorePlat\CP.WorkFlow.Designer.Web\obj\Debug\netcoreapp1.0\CP.WorkFlow.Designer.Webdotnet-compile.deps.json",CP.WorkFlow.Designer.Web.deps.json
-F:\CorePlat\CorePlat\CP.WorkFlow.Designer.Web\Program.cs
-F:\CorePlat\CorePlat\CP.WorkFlow.Designer.Web\Startup.cs
-F:\CorePlat\CorePlat\CP.WorkFlow.Designer.Web\Controllers\FlowDesignController.cs
-F:\CorePlat\CorePlat\CP.WorkFlow.Designer.Web\Controllers\HomeController.cs
+--resource:"E:\个人学习\CorePlat\CorePlat\CP.WorkFlow.Designer.Web\obj\Debug\netcoreapp1.0\CP.WorkFlow.Designer.Webdotnet-compile.deps.json",CP.WorkFlow.Designer.Web.deps.json
+E:\个人学习\CorePlat\CorePlat\CP.WorkFlow.Designer.Web\Program.cs
+E:\个人学习\CorePlat\CorePlat\CP.WorkFlow.Designer.Web\Startup.cs
+E:\个人学习\CorePlat\CorePlat\CP.WorkFlow.Designer.Web\Controllers\FlowDesignController.cs
+E:\个人学习\CorePlat\CorePlat\CP.WorkFlow.Designer.Web\Controllers\HomeController.cs

@@ -1,0 +1,100 @@
+﻿CREATE PROCEDURE [dbo].[ISO_CW_SJLYSQ_Print] 
+-- Add the parameters for the stored procedure here
+   @Condition NVARCHAR(MAX)
+AS
+BEGIN
+ SET NOCOUNT ON;
+SET @Condition = REPLACE(@Condition,'''','')
+declare @flowId int 
+set @flowId =430
+declare @insId int,
+
+--申请人 节点ID  4217
+@SQRID nvarchar(50),
+
+@SQRAddTime nvarchar(50),
+
+@SQRLogRemark nvarchar(max),
+
+--申请部门负责人 节点ID 4218
+@FZRID nvarchar(50),
+
+@FZRAddTime nvarchar(50),
+
+@FZRLogRemark nvarchar(max),
+
+--分管领导 节点ID 4219
+@FGLDID nvarchar(50),
+
+@FGLDAddTime nvarchar(50),
+
+@FGLDLogRemark nvarchar(max),
+
+--财务经办人 节点ID 4220
+@CWJBID nvarchar(50),
+
+@CWJBAddTime nvarchar(50),
+
+@CWJBLogRemark nvarchar(max)
+
+
+
+
+
+
+
+
+
+SELECT @insId = id FROM DLFlow.dbo.wf_flowinstance_main where flowid=@flowId and formpk1  IN ( SELECT * FROM dbo.DL_split(@Condition,','))
+--
+
+SELECT @SQRID=SignUserId,@SQRAddTime=CONVERT(varchar(12) ,AddTime, 111),@SQRLogRemark=LogRemark  FROM [DLFlow].[dbo].WF_FlowInstance_TaskManaLog where  NodeId = 4217 and InsId =@InsID
+SELECT @FZRID=SignUserId,@FZRAddTime=CONVERT(varchar(12) ,AddTime, 111),@FZRLogRemark=LogRemark  FROM [DLFlow].[dbo].WF_FlowInstance_TaskManaLog where  NodeId = 4218 and InsId =@InsID
+SELECT @FGLDID=SignUserId,@FGLDAddTime=CONVERT(varchar(12) ,AddTime, 111),@FGLDLogRemark=LogRemark FROM [DLFlow].[dbo].WF_FlowInstance_TaskManaLog where  NodeId = 4219 and InsId =@InsID
+SELECT @CWJBID=SignUserId,@CWJBAddTime=CONVERT(varchar(12) ,AddTime, 111),@CWJBLogRemark=LogRemark  FROM [DLFlow].[dbo].WF_FlowInstance_TaskManaLog where  NodeId = 4220 and InsId =@InsID
+
+
+
+SELECT FormTitle,SQDeptName,SQUserName,LYNR,LYNRSF,YT,LYFS,LYSJKJ,SJNRHSSSJ,
+
+
+@SQRAddTime as SQRAddTime,
+@FZRAddTime as FZRAddTime,
+@FGLDAddTime as FGLDAddTime ,
+@CWJBAddTime as CWJBAddTime,
+(SELECT  DigitSignDataPic FROM DLUser.dbo.v_UserDigitSign WHERE   UserId =@SQRID) AS SQRID,
+(SELECT  DigitSignDataPic FROM DLUser.dbo.v_UserDigitSign WHERE   UserId =@FZRID) AS FZRID,
+(SELECT  DigitSignDataPic FROM DLUser.dbo.v_UserDigitSign WHERE   UserId =@FGLDID) AS FGLDID,
+(SELECT  DigitSignDataPic FROM DLUser.dbo.v_UserDigitSign WHERE   UserId =@CWJBID) AS CWJBID
+
+ FROM [dbo].ISO_CW_SJLYSQ WHERE ID IN ( SELECT * FROM dbo.DL_split
+
+(@Condition,','))
+ 
+ end
+
+
+
+
+  <script type="text/javascript">
+       function DownBGTZDWord() {
+var type1 = WF_InsId;
+           var nWidth = 100;
+           var nHeight = 100;
+           var nLeft = (window.screen.width - nWidth) / 2;
+           var nTop = (window.screen.height - nHeight) / 2;
+           var url = "/DLWeb/Engine/WordExport/ExportFrm.aspx?WordCode=Word0169&Condition=" + WF_FormPk1+"&ExportName="+ escape(WF_InsName)+"&ExportNameByInsId="+WF_InsId;
+           window.open(url, "", "left=" + nLeft + "px,top=" + nTop + "px,width=" + nWidth + "px,height=" + nHeight + "px,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes ");
+
+       }
+</script>
+
+<td width='10px' id='tdDownBGTZDWord0' > 
+                            <a href="#" onclick="javascript:DownBGTZDWord();">
+                                <img src="../../../Skin/DLCommon/SynIcon/Print.png" border="0" style="vertical-align:middle;">
+                        </td>
+                        <td width='50px' id='tdDownBGTZDWord1'>
+                             <a href="#" onclick="javascript:DownBGTZDWord();"><nobr><span id="Span3" style="font-size:14px;">打印表单</span></nobr></a>
+                        </td>
+                        <td width="10px"   id='tdDownBGTZDWord2'>
+                        </td>
